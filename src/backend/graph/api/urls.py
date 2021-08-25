@@ -1,7 +1,10 @@
 from django.urls import path
 
-from .views import get_graphs
+from graph.api import views
 
 urlpatterns = [
-    path('', get_graphs, name='get_graphs'),
+    path('', views.GraphList.as_view(), name='graph-list'),
+    path('<int:pk>', views.GraphDetail.as_view(), name='graph-list'),
+    path('create/', views.GraphCreate.as_view(), name='graph-list'),
+    path('get_graphs/', views.get_graphs, name='get_graphs'),
 ]
